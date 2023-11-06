@@ -1,5 +1,7 @@
-from KimEval import sentence_level_f1
 import argparse
+
+from KimEval import sentence_level_f1
+
 
 def main():
     parser = argparse.ArgumentParser()
@@ -13,6 +15,6 @@ def main():
     )
     print(f"Average sentence level F1: {f1}")
 
-    
+
 if __name__ == '__main__':
     main()

@@ -1,11 +1,11 @@
 PREVIOUSLY_REPORTED_NUMBERS = {
     'OrderedNeurons': 'mean F1 = 47.7, max F1 = 49.4',
-    'NeuralPCFG' : 'mean F1 = 50.8, max F1 = 52.6',
-    'CompoundPCFG' : 'mean F1 = 50.8, max F1 = 52.6',
-    'DIORA' : 'mean F1 = 56.8',
-    'S-DIORA' : 'mean F1 = 57.6, max F1 = 64.0',
-    'ConTest' : 'mean F1 = 62.8, max F1 = 65.9',
-    'ContexDistort' : 'F1 = 49.0',
+    'NeuralPCFG': 'mean F1 = 50.8, max F1 = 52.6',
+    'CompoundPCFG': 'mean F1 = 50.8, max F1 = 52.6',
+    'DIORA': 'mean F1 = 56.8',
+    'S-DIORA': 'mean F1 = 57.6, max F1 = 64.0',
+    'ConTest': 'mean F1 = 62.8, max F1 = 65.9',
+    'ContexDistort': 'F1 = 49.0',
 }
 MOTHER_PATH = 'experiments/'
 GOLD_NAME = 'Gold'

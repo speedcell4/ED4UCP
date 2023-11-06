@@ -16,4 +16,3 @@ Worsts = {
     'ConTest': 'id0',
     'ContexDistort': 'layer8',
 }
-

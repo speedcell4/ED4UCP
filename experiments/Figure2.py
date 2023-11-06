@@ -1,15 +1,23 @@
-from experiments.constants import TABLE6_GUIDE_NAME, MOTHER_PATH, RUN, TEST_FILE_NAME, GOLD_NAME
-from experiments.utils import ensemble_by_model_run
-from KimEval import sentence_level_f1
-import pandas as pd
-import numpy as np
 from itertools import combinations
-from tqdm import tqdm
+
+import numpy as np
+import pandas as pd
 from matplotlib import rcParams
+from tqdm import tqdm
+
+from KimEval import sentence_level_f1
+from experiments.constants import GOLD_NAME
+from experiments.constants import MOTHER_PATH
+from experiments.constants import RUN
+from experiments.constants import TABLE6_GUIDE_NAME
+from experiments.constants import TEST_FILE_NAME
+from experiments.utils import ensemble_by_model_run
+
 rcParams['font.family'] = 'sans-serif'
 import matplotlib.pyplot as plt
 import os
 import math
+
 
 def figure_2():
     guide = pd.read_csv(os.path.join(MOTHER_PATH, TABLE6_GUIDE_NAME)).set_index(RUN)
@@ -17,7 +25,7 @@ def figure_2():
     overal = []
     for i in tqdm(range(guide.shape[1])):
         scores = []
-        for models in tqdm(combinations(guide.columns, i+1), total=math.comb(guide.shape[1], i+1)):
+        for models in tqdm(combinations(guide.columns, i + 1), total=math.comb(guide.shape[1], i + 1)):
             this_cobination_scores = []
             for run in tqdm(guide.index):
                 model_run = {model: guide.loc[run, model] for model in models}
@@ -34,22 +42,24 @@ def figure_2():
 
     def plot(ax, data):
         colors = {
-                'best': '#AFB7F8',
-                'avg': '#6F7DF3',
-                'worst': '#2F3779'
+            'best': '#AFB7F8',
+            'avg': '#6F7DF3',
+            'worst': '#2F3779'
         }
         if len(data[0]) == 5:
             minmins, mins, means, maxs, maxmaxs = zip(*data)
         if len(data[0]) == 3:
             mins, means, maxs = zip(*data)
-        labels = [str(i) for i in range(1, len(data)+1)]
-        ax.plot(labels, maxs, linestyle='-.', marker='^', label='Best-performing combination', color=colors['best'], alpha=1)
+        labels = [str(i) for i in range(1, len(data) + 1)]
+        ax.plot(labels, maxs, linestyle='-.', marker='^', label='Best-performing combination', color=colors['best'],
+                alpha=1)
         ax.plot(labels, means, marker='o', label='Average over all combinations', color=colors['avg'])
-        ax.plot(labels, mins, linestyle='--', marker='s', label='Worst-performing combination', color=colors['worst'], alpha=0.5)
+        ax.plot(labels, mins, linestyle='--', marker='s', label='Worst-performing combination', color=colors['worst'],
+                alpha=0.5)
         ax.fill_between(labels, mins, maxs, color=colors['avg'], alpha=0.3)
         if len(data[0]) == 5:
-            ax.fill_between(labels, maxs, maxmaxs, color=colors['best'], alpha=0.1/.8)
-            ax.fill_between(labels, mins, minmins, color=colors['worst'], alpha=0.05/.8)
+            ax.fill_between(labels, maxs, maxmaxs, color=colors['best'], alpha=0.1 / .8)
+            ax.fill_between(labels, mins, minmins, color=colors['worst'], alpha=0.05 / .8)
         ax.spines['right'].set_visible(False)
         ax.spines['top'].set_visible(False)
         return ax

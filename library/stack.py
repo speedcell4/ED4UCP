@@ -3,6 +3,7 @@ class Node:
         self.value = value
         self.prev = None
 
+
 class Stack:
     def __init__(self):
         self.head = None
@@ -18,6 +19,6 @@ class Stack:
         self.head = node.prev if node is not None else None
         del node
         return value
-    
+
     def is_empty(self):
         return self.head is None

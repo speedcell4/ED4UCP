@@ -1,12 +1,14 @@
 import argparse
+
+from experiments.Figure1 import figure_1
+from experiments.Figure2 import figure_2
+from experiments.Figure4 import figure_4
 from experiments.Table1 import table_1
 from experiments.Table2 import table_2
 from experiments.Table3 import table_3
 from experiments.Table4 import table_4
 from experiments.Table6 import table_6
-from experiments.Figure1 import figure_1
-from experiments.Figure2 import figure_2
-from experiments.Figure4 import figure_4
+
 
 def main():
     parser = argparse.ArgumentParser()
@@ -19,7 +21,7 @@ def main():
     parser.add_argument("--Figure2", action="store_true")
     parser.add_argument("--Figure4", action="store_true")
     config = parser.parse_args()
-    
+
     if config.Table1:
         print('Table 1')
         table_1()
@@ -52,6 +54,7 @@ def main():
         print('Figure 4')
         figure_4()
         print("Dumped into figure4.png")
+
 
 if __name__ == '__main__':
     main()
